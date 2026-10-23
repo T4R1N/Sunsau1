@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bty3ahbi0dt6o"]
+
+[ext_resource type="Script" uid="uid://beicks57sfro3" path="res://scripts/whacker.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://ciw5usvw8vf8e" path="res://scripts/components/burrow_component.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://dwtswg57iye5y" path="res://icon.svg" id="3_sugp2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phvbs"]
+radius = 18.027756
+
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+offsets = PackedFloat32Array(0, 0.6927711)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_phvbs"]
+gradient = SubResource("Gradient_sugp2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phvbs"]
+radius = 25.0
+height = 72.0
+
+[node name="Stage" type="Node2D" unique_id=1711577985]
+
+[node name="Whacker" type="Area2D" parent="." unique_id=1330952161]
+script = ExtResource("1_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Whacker" unique_id=921580607]
+shape = SubResource("CircleShape2D_phvbs")
+
+[node name="PointLight2D" type="PointLight2D" parent="Whacker" unique_id=1237203627]
+texture = SubResource("GradientTexture2D_phvbs")
+
+[node name="Mole" type="CharacterBody2D" parent="." unique_id=1431031508]
+position = Vector2(286, 141)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mole" unique_id=1183389887]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_phvbs")
+
+[node name="BurrowComponent" type="Node2D" parent="Mole" unique_id=1842890170 node_paths=PackedStringArray("burrow_timer", "burrow_sprite", "revealed_sprite")]
+script = ExtResource("1_o5qli")
+burrow_timer = NodePath("Timer")
+burrow_sprite = NodePath("../Burrow")
+revealed_sprite = NodePath("../Revealed")
+
+[node name="Timer" type="Timer" parent="Mole/BurrowComponent" unique_id=1665015536]
+
+[node name="Burrow" type="Sprite2D" parent="Mole" unique_id=430471622]
+position = Vector2(0, 10)
+scale = Vector2(-0.42017475, 0.28828555)
+texture = ExtResource("3_sugp2")
+
+[node name="Revealed" type="Sprite2D" parent="Mole" unique_id=1381871566]
+position = Vector2(1, -5.0000005)
+scale = Vector2(0.37400967, 0.54573774)
+texture = ExtResource("3_sugp2")
