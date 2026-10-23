@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c7udyfiscc5ib"]
+
+[ext_resource type="Script" uid="uid://ciw5usvw8vf8e" path="res://scripts/components/burrow_component.gd" id="1_0o2lx"]
+[ext_resource type="Texture2D" uid="uid://dwtswg57iye5y" path="res://icon.svg" id="2_kln4g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phvbs"]
+radius = 25.0
+height = 72.0
+
+[node name="Mole" type="CharacterBody2D" unique_id=1507257636]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1474360008]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_phvbs")
+
+[node name="BurrowComponent" type="Node2D" parent="." unique_id=2126523677 node_paths=PackedStringArray("burrow_timer", "hide_timer", "pause_timer", "burrow_sprite", "revealed_sprite")]
+script = ExtResource("1_0o2lx")
+burrow_timer = NodePath("Timer")
+hide_timer = NodePath("Timer2")
+pause_timer = NodePath("Timer3")
+burrow_sprite = NodePath("../Burrow")
+revealed_sprite = NodePath("../Revealed")
+speed = 50.0
+
+[node name="Timer" type="Timer" parent="BurrowComponent" unique_id=658736088]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="BurrowComponent" unique_id=214731553]
+one_shot = true
+
+[node name="Timer3" type="Timer" parent="BurrowComponent" unique_id=156618458]
+one_shot = true
+
+[node name="Burrow" type="Sprite2D" parent="." unique_id=433706283]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, 10)
+scale = Vector2(-0.42017475, 0.28828555)
+texture = ExtResource("2_kln4g")
+
+[node name="Revealed" type="Sprite2D" parent="." unique_id=183370229]
+position = Vector2(1, -5.0000005)
+scale = Vector2(0.37400967, 0.54573774)
+texture = ExtResource("2_kln4g")

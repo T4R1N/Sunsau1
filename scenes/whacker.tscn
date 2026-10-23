@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://l615oa023j4g"]
+
+[ext_resource type="Script" uid="uid://beicks57sfro3" path="res://scripts/whacker.gd" id="1_t82he"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phvbs"]
+radius = 18.027756
+
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+offsets = PackedFloat32Array(0, 0.6927711)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_phvbs"]
+gradient = SubResource("Gradient_sugp2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Whacker" type="Area2D" unique_id=659071834]
+script = ExtResource("1_t82he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2089185672]
+shape = SubResource("CircleShape2D_phvbs")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1137282800]
+texture = SubResource("GradientTexture2D_phvbs")

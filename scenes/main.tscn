@@ -1,60 +1,49 @@
 [gd_scene format=3 uid="uid://bty3ahbi0dt6o"]
 
-[ext_resource type="Script" uid="uid://beicks57sfro3" path="res://scripts/whacker.gd" id="1_0wfyh"]
-[ext_resource type="Script" uid="uid://ciw5usvw8vf8e" path="res://scripts/components/burrow_component.gd" id="1_o5qli"]
-[ext_resource type="Texture2D" uid="uid://dwtswg57iye5y" path="res://icon.svg" id="3_sugp2"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_phvbs"]
-radius = 18.027756
-
-[sub_resource type="Gradient" id="Gradient_sugp2"]
-offsets = PackedFloat32Array(0, 0.6927711)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_phvbs"]
-gradient = SubResource("Gradient_sugp2")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phvbs"]
-radius = 25.0
-height = 72.0
+[ext_resource type="PackedScene" uid="uid://l615oa023j4g" path="res://scenes/whacker.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://c7udyfiscc5ib" path="res://scenes/mole.tscn" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://cmcxvyrsueip1" path="res://scenes/score_label.gd" id="3_sugp2"]
 
 [node name="Stage" type="Node2D" unique_id=1711577985]
 
-[node name="Whacker" type="Area2D" parent="." unique_id=1330952161]
-script = ExtResource("1_0wfyh")
+[node name="Whacker" parent="." unique_id=659071834 instance=ExtResource("1_0wfyh")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Whacker" unique_id=921580607]
-shape = SubResource("CircleShape2D_phvbs")
-
-[node name="PointLight2D" type="PointLight2D" parent="Whacker" unique_id=1237203627]
-texture = SubResource("GradientTexture2D_phvbs")
-
-[node name="Mole" type="CharacterBody2D" parent="." unique_id=1431031508]
+[node name="Mole" parent="." unique_id=1507257636 instance=ExtResource("2_sugp2")]
 position = Vector2(286, 141)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mole" unique_id=1183389887]
-position = Vector2(0, -2)
-shape = SubResource("CapsuleShape2D_phvbs")
+[node name="Mole2" parent="." unique_id=2037535985 instance=ExtResource("2_sugp2")]
+position = Vector2(532, 254)
 
-[node name="BurrowComponent" type="Node2D" parent="Mole" unique_id=1842890170 node_paths=PackedStringArray("burrow_timer", "hide_timer", "burrow_sprite", "revealed_sprite")]
-script = ExtResource("1_o5qli")
-burrow_timer = NodePath("Timer")
-hide_timer = NodePath("Timer2")
-burrow_sprite = NodePath("../Burrow")
-revealed_sprite = NodePath("../Revealed")
+[node name="Mole3" parent="." unique_id=1158110083 instance=ExtResource("2_sugp2")]
+position = Vector2(361, 333)
 
-[node name="Timer" type="Timer" parent="Mole/BurrowComponent" unique_id=1665015536]
+[node name="Mole4" parent="." unique_id=571701642 instance=ExtResource("2_sugp2")]
+position = Vector2(693, 176)
 
-[node name="Timer2" type="Timer" parent="Mole/BurrowComponent" unique_id=1316391879]
+[node name="Mole5" parent="." unique_id=1961857813 instance=ExtResource("2_sugp2")]
+position = Vector2(658, 368)
 
-[node name="Burrow" type="Sprite2D" parent="Mole" unique_id=430471622]
-position = Vector2(0, 10)
-scale = Vector2(-0.42017475, 0.28828555)
-texture = ExtResource("3_sugp2")
+[node name="Mole6" parent="." unique_id=6949741 instance=ExtResource("2_sugp2")]
+position = Vector2(469, 425)
 
-[node name="Revealed" type="Sprite2D" parent="Mole" unique_id=1381871566]
-position = Vector2(1, -5.0000005)
-scale = Vector2(0.37400967, 0.54573774)
-texture = ExtResource("3_sugp2")
+[node name="Mole7" parent="." unique_id=1252237593 instance=ExtResource("2_sugp2")]
+position = Vector2(847, 306)
+
+[node name="Mole8" parent="." unique_id=1134795892 instance=ExtResource("2_sugp2")]
+position = Vector2(787, 438)
+
+[node name="GameUI" type="Control" parent="." unique_id=843677776]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="GameUI" unique_id=709488633]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "M$ 2,000"
+script = ExtResource("3_sugp2")
