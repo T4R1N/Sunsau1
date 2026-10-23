@@ -2,6 +2,7 @@ class_name BurrowComponent
 extends Node2D
 
 @export var burrow_timer: Timer
+@export var hide_timer: Timer
 @export var burrow_sprite: Sprite2D
 @export var revealed_sprite: Sprite2D
 

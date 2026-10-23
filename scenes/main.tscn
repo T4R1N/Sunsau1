@@ -38,13 +38,16 @@ position = Vector2(286, 141)
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_phvbs")
 
-[node name="BurrowComponent" type="Node2D" parent="Mole" unique_id=1842890170 node_paths=PackedStringArray("burrow_timer", "burrow_sprite", "revealed_sprite")]
+[node name="BurrowComponent" type="Node2D" parent="Mole" unique_id=1842890170 node_paths=PackedStringArray("burrow_timer", "hide_timer", "burrow_sprite", "revealed_sprite")]
 script = ExtResource("1_o5qli")
 burrow_timer = NodePath("Timer")
+hide_timer = NodePath("Timer2")
 burrow_sprite = NodePath("../Burrow")
 revealed_sprite = NodePath("../Revealed")
 
 [node name="Timer" type="Timer" parent="Mole/BurrowComponent" unique_id=1665015536]
+
+[node name="Timer2" type="Timer" parent="Mole/BurrowComponent" unique_id=1316391879]
 
 [node name="Burrow" type="Sprite2D" parent="Mole" unique_id=430471622]
 position = Vector2(0, 10)
