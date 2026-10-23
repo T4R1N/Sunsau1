@@ -46,7 +46,7 @@ func _pop_out() -> void:
 	hide_timer.start()
 
 func _hide() -> void:
-	conceal()
+	begin_burrow()
 
 func whack() -> void:
-	queue_free()
+	get_parent().queue_free()
