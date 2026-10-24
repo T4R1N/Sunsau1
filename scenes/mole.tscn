@@ -32,12 +32,13 @@ one_shot = true
 one_shot = true
 
 [node name="Burrow" type="Sprite2D" parent="." unique_id=433706283]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0.35686275, 0.23137255, 0.11372549, 1)
 position = Vector2(0, 10)
 scale = Vector2(-0.42017475, 0.28828555)
 texture = ExtResource("2_kln4g")
 
 [node name="Revealed" type="Sprite2D" parent="." unique_id=183370229]
+modulate = Color(1, 0.78039217, 0, 1)
 position = Vector2(1, -5.0000005)
 scale = Vector2(0.37400967, 0.54573774)
 texture = ExtResource("2_kln4g")

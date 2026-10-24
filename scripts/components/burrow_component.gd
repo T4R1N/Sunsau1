@@ -20,7 +20,9 @@ extends Node2D
 @export var move_time: float = 1.0
 @export var pause_time: float = 1.0
 @export var speed: float = 200.0
+
 var direction: float = randf_range(0, 360)
+var whackable: bool = true
 
 enum BurrowState {
 	Burrowing,
@@ -67,7 +69,16 @@ func _hide() -> void:
 
 func whack() -> void:
 	GameManager.add_to_score(score)
-	get_parent().queue_free()
+	go_away()
+
+func go_away() -> void:
+	get_parent().visible = false
+	whackable = false
+	await get_tree().create_timer(5.0).timeout
+	parent.global_position.x = randf_range(0, get_window().size.x)
+	parent.global_position.y = randf_range(0, get_window().size.y)
+	parent.visible = true
+	whackable = true
 
 func _pause_movement() -> void:
 	var original_speed := speed
